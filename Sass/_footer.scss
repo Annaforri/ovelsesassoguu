@@ -1,0 +1,43 @@
+@use 'design';
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a{
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        background-color: design.$hvit;
+        border-radius: 50%; /* gjør sirkelen */
+        border: 3px solid design.$hvit;
+        overflow: hidden; /* klipp bildet inni sirkelen */
+
+        img {
+            width: 100%;
+            height: 100%; /* fyller hele containeren */
+            object-fit: cover; /* fyller sirkelen */
+            display: block; /* fjerner mellomrom under bildet */
+        }
+    }
+
+    ul{
+        list-style: none;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        margin: 0 ;
+        padding: 0;
+    }
+
+    li{
+        margin-top: 2rem;
+
+        i{ font-size: 1.5rem;}
+    }
+}

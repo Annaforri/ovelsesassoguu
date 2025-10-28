@@ -1,0 +1,435 @@
+@charset "UTF-8";
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.main-header .logo {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border-radius: 50%; /* gjør sirkelen */
+  border: 3px solid white;
+  overflow: hidden; /* klipp bildet inni sirkelen */
+}
+.main-header .logo img {
+  width: 100%;
+  height: 100%; /* fyller hele containeren */
+  -o-object-fit: cover;
+     object-fit: cover; /* fyller sirkelen */
+  display: block; /* fjerner mellomrom under bildet */
+}
+
+nav {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  z-index: 50;
+  background-color: #03260b;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  padding: 1rem 0;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+nav ul li i {
+  text-decoration: none;
+  color: white;
+  font-size: 1.8rem;
+  padding: 0.5rem 1rem;
+}
+nav ul li i:hover {
+  color: #9ee8af;
+}
+nav ul li i:focus {
+  outline: none;
+}
+nav ul li i:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 10px;
+}
+
+@media (min-width: 790px) {
+  body {
+    padding-top: 0;
+  }
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    background-color: #03260b;
+    padding: 1rem 3rem;
+    margin: 0;
+    flex: 1 1 auto;
+    border-color: #03260b;
+  }
+  .main-header .logo {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+  }
+  .main-header .logo img {
+    display: block;
+  }
+  nav {
+    position: static;
+    inset: auto;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    flex: 1 1 auto;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  nav ul li i {
+    font-size: 1.5rem;
+    color: white;
+  }
+  nav ul li i:hover {
+    color: #9ee8af;
+  }
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer a {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border-radius: 50%; /* gjør sirkelen */
+  border: 3px solid white;
+  overflow: hidden; /* klipp bildet inni sirkelen */
+}
+footer a img {
+  width: 100%;
+  height: 100%; /* fyller hele containeren */
+  -o-object-fit: cover;
+     object-fit: cover; /* fyller sirkelen */
+  display: block; /* fjerner mellomrom under bildet */
+}
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+footer li {
+  margin-top: 2rem;
+}
+footer li i {
+  font-size: 1.5rem;
+}
+
+/* ===== Reset / grunnlag ===================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Behold «mobil-bredde»-utseende på desktop, men ikke lås minimum */
+  width: 100%; /* ta bort hvis du vil at innhold kan bli bredere */
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #000000;
+  padding-bottom: 150px; /* slik at fixed-nav ikke dekker innhold */
+}
+
+/* Viktig for at grid/flex-barn skal få lov å krympe */
+section, article, .grid-item {
+  min-width: 0;
+}
+
+.mobil {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* ===== Mixins =============================================== */
+/* Horisontal swipe-container uten synlig scrollbar */
+/* ===== Velkomstbanner ======================================= */
+#welcome-banner {
+  /* legg vanlige deklarasjoner først */
+  margin: 2rem 1rem;
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  /* så inkluderer du mixinene */
+  background-color: #c2c2c2;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+  background-image: url("https://picsum.photos/id/106/800/400");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+#welcome-banner:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+#welcome-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.45);
+  z-index: 1;
+}
+#welcome-banner > * {
+  position: relative;
+  z-index: 2;
+}
+#welcome-banner h1 {
+  margin: 0 0 1rem 0;
+}
+#welcome-banner .btn {
+  display: inline-block;
+  background-color: #000000;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color all 0.3s ease, transform all 0.3s ease;
+}
+#welcome-banner .btn:hover {
+  background-color: #003b0e;
+  transform: translateY(-2px);
+}
+#welcome-banner .btn:active {
+  transform: translateY(0);
+}
+
+/* ===== Kategorier =========================================== */
+#categories h2 {
+  margin: 0 0 0.5rem 1.5rem;
+}
+
+.kategori-container {
+  display: grid;
+  gap: 1rem;
+  margin: 0 1rem 1rem;
+  /* Flytende rutenett: så mange kolonner som får plass,
+     men hvert kort kan krympe ned til 140px. */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-rows: auto auto;
+  height: 200px;
+}
+.kategori-container #el {
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+.kategori-container #fashion {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.kategori-container #home {
+  grid-column: 2/3;
+  grid-row: 2/4;
+}
+
+#el, #fashion, #home {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+#el:hover, #fashion:hover, #home:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+#el h3, #fashion h3, #home h3 {
+  margin: 0;
+  color: #003b0e;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+}
+
+/* ===== Nyheter (swipe uten scrollbar) ======================= */
+#news {
+  /* Hvert produktkort i scrolleren */
+  /* Klikkflate + bilde */
+  /* Hjerte øverst til venstre */
+  /* Tekst under bildet: merke, navn, pris */
+}
+#news h2 {
+  margin: 1rem;
+}
+#news .scroll-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* skjul scrollbar */
+  scrollbar-width: none; /* Firefox */
+  /* WebKit */
+  margin: 0 1rem 1rem;
+  padding: 0.25rem 0.5rem;
+}
+#news .scroll-container::-webkit-scrollbar {
+  display: none;
+}
+#news .scroll-container > article {
+  /* Kan krympe ned til 160px på veldig smale mobiler */
+  flex: 0 0 clamp(160px, 70vw, 280px);
+  scroll-snap-align: start;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+#news .scroll-container > article:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+#news .scroll-container > article > a {
+  display: block;
+  position: relative;
+}
+#news .scroll-container img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/5; /* jevn høyde, skaler fint */
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#news .scroll-container i.fa-heart {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(225, 29, 71, 0.7019607843);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+#news .scroll-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0.75rem 0.75rem;
+  display: grid;
+  gap: 0.25rem;
+  /* Brand */
+  /* Produktnavn */
+  /* Pris */
+}
+#news .scroll-container ul li:nth-child(1) {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+#news .scroll-container ul li:nth-child(2) h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+#news .scroll-container ul li:nth-child(3) {
+  font-weight: 700;
+}
+
+/* ===== Populære kategorier ================================= */
+#popular h2 {
+  margin: 1rem 0 0.5rem 1.5rem;
+}
+
+.popular-container {
+  display: grid;
+  gap: 1rem;
+  margin: 0 1rem 2rem;
+  /* 2–4 kolonner etter plass; kort kan krympe til 140px */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+#popular article {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  padding: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+#popular article:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+#popular article img {
+  width: 100%;
+  aspect-ratio: 1/1; /* kvadrat */
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+  display: block;
+}
+#popular article h3 {
+  margin: 0;
+}
+
+/* ===== Små ekstra-justeringer =============================== */
+@media (max-width: 360px) {
+  /* Tving 2 kolonner selv på veldig smale skjermer, om ønskelig */
+  .kategori-container,
+  .popular-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 700px) {
+  .deskop {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,147 @@
+
+
+@use 'design';
+
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  .logo {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: design.$hvit;
+    border-radius: 50%; /* gjør sirkelen */
+    border: 3px solid design.$hvit;
+    overflow: hidden; /* klipp bildet inni sirkelen */
+
+    img {
+      width: 100%;
+      height: 100%; /* fyller hele containeren */
+      object-fit: cover; /* fyller sirkelen */
+      display: block; /* fjerner mellomrom under bildet */
+    }
+  }
+}
+
+nav{
+    display: flex;
+    flex:1 1 auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    z-index: 50;
+
+    background-color: design.$kaldmørk-grønn;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    padding: 1rem 0;
+
+    ul {
+        list-style: none;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+        margin: 0 ;
+        padding: 0;
+
+        li {
+          
+
+            i {
+                text-decoration: none;
+                color: design.$hvit;
+                font-size: 1.8rem;
+                padding: 0.5rem 1rem;
+
+                &:hover {
+                    color: design.$grønn;
+                }
+
+                &:focus{ outline: none;}
+                &:focus-visible{ outline: 3px solid design.$hvit;outline-offset: 10px;}
+                
+
+            }
+        }
+    }
+}
+
+
+@media (min-width: 790px) {
+  body {
+    padding-top: 0;
+  }
+
+
+
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    background-color: design.$kaldmørk-grønn;
+    padding: 1rem 3rem;
+    margin:0;
+    flex: 1 1 auto;
+    border-color: design.$kaldmørk-grønn;
+
+    .logo {
+      display: block;
+      width: 50px;
+      height: 50px;
+      border: 1px solid design.$hvit;
+
+      img{
+        display: block;
+      }
+
+    }
+  }
+
+  nav {
+    position: static;
+    inset:auto;
+    display:flex;
+    justify-content: flex-end;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    flex: 1 1 auto;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+
+      li i {
+        font-size: 1.5rem;
+        color: design.$hvit;
+
+        &:hover {
+          color: design.$grønn;
+          }
+        }
+      }
+    }
+  }
+
+
+
+
