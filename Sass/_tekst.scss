@@ -46,8 +46,6 @@ h4 {
 p,
 li {
   font-size: clamp(1rem, 1.2vw + 0.25rem, 1.125rem); /* ~16–18px */
-  line-height: 1.6;
-  margin-bottom: 1rem;
 }
 
 small {
@@ -60,6 +58,8 @@ a {
   color: #0645ad;
   text-decoration: underline;
 }
+
+
 
 a:focus-visible {
   outline: 3px solid #ffbf47;
