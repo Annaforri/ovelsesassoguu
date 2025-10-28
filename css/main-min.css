@@ -1,4 +1,84 @@
 @charset "UTF-8";
+html {
+  font-size: 100%; /* = ca. 16px i de fleste nettlesere */
+  scroll-behavior: smooth;
+}
+
+/* 2️⃣  Basestil for hele siden */
+body {
+  font-family: "Arial", "Helvetica Neue", sans-serif;
+  font-size: 1rem; /* 16px – skalerbart */
+  line-height: 1.6; /* god lesbarhet */
+  color: #111; /* god kontrast */
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* 3️⃣  Responsiv skrift med clamp()  — juster etter behov */
+h1 {
+  font-size: clamp(1.75rem, 4vw + 0.5rem, 2.75rem); /* min ~28px, maks ~44px */
+  line-height: 1.2;
+  margin: 1.5rem 0 1rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
+  line-height: 1.3;
+  margin: 1.25rem 0 0.75rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw + 0.5rem, 1.75rem);
+  line-height: 1.4;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2vw + 0.5rem, 1.5rem);
+  line-height: 1.5;
+  margin: 0.75rem 0 0.5rem;
+  font-weight: 500;
+}
+
+p,
+li {
+  font-size: clamp(1rem, 1.2vw + 0.25rem, 1.125rem); /* ~16–18px */
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+small {
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  line-height: 1.4;
+}
+
+/* 4️⃣  Tilgjengelige lenker og fokus */
+a {
+  color: #0645ad;
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 3px;
+}
+
+/* 5️⃣  Responsiv tekst i små skjermer */
+@media (max-width: 480px) {
+  html {
+    font-size: 90%; /* reduser litt for små skjermer */
+  }
+}
+/* 6️⃣  Tilpass for ekstra store skjermer */
+@media (min-width: 1200px) {
+  html {
+    font-size: 112.5%; /* ~18px base */
+  }
+}
 .main-header {
   display: flex;
   justify-content: center;
