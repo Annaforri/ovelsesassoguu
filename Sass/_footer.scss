@@ -51,14 +51,20 @@ footer{
     @media (min-width:790px){
 
         .some{
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
+            justify-content: space-between;
             text-align: center;
             gap:2rem;
 
-            a span{
-                display: block;
+            ul{
+                flex-direction: column;
+        
             }
+
+                a span{
+                    display: block;
+                }
         }
     }
 }

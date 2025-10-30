@@ -238,10 +238,14 @@ footer .some li span {
 }
 @media (min-width: 790px) {
   footer .some {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     text-align: center;
     gap: 2rem;
+  }
+  footer .some ul {
+    flex-direction: column;
   }
   footer .some a span {
     display: block;
