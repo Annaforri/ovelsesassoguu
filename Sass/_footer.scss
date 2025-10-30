@@ -3,10 +3,9 @@
 footer{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
-    a{
+    .logo{
         display: inline-block;
         width: 150px;
         height: 150px;
@@ -23,21 +22,43 @@ footer{
         }
     }
 
-    ul{
+    .some{
         list-style: none;
-
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 1rem;
-
-        margin: 0 ;
+        gap: 2rem;
+        margin-top: 2rem;
         padding: 0;
+    
+
+        li{
+
+            a{
+                font-size: 1.5rem;
+                text-decoration: none;
+                color: design.$svart;
+            }
+
+            span{
+                display: none;
+            }
+        }
     }
 
-    li{
-        margin-top: 2rem;
 
-        i{ font-size: 1.5rem;}
+
+    @media (min-width:790px){
+
+        .some{
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap:2rem;
+
+            a span{
+                display: block;
+            }
+        }
     }
 }

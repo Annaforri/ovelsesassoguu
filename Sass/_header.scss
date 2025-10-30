@@ -60,16 +60,16 @@ nav{
         margin: 0 ;
         padding: 0;
 
-        li {
+        li a{
+          text-decoration: none;
+          color: design.$hvit;
+          font-size: 1.8rem;
+          gap: 2rem;
+
+          span{ 
+            display: none;
+          }
       
-
-            i {
-                text-decoration: none;
-                color: design.$hvit;
-                font-size: 1.25rem;
-                gap: 2rem;
-        
-
                 &:hover {
                     color: design.$grønn;
                 }
@@ -81,7 +81,6 @@ nav{
             }
         }
     }
-}
 
 
 @media (min-width: 790px) {
@@ -118,7 +117,7 @@ nav{
   nav {
     position: static;
     inset:auto;
-    display:flex;
+    display: flex;
     justify-content: flex-end;
     border-radius: 0;
     margin: 0;
@@ -126,14 +125,21 @@ nav{
     flex: 1 1 auto;
 
     ul {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-     
 
-      li i {
-        font-size: 1.25rem;
+      li a {
+        font-size: 1rem;
         color: design.$hvit;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap:0.5rem;
+        text-decoration: none;
+
+        span{
+          color: design.$hvit;
+          display: inline-block;
+        }
 
         &:hover {
           color: design.$grønn;
