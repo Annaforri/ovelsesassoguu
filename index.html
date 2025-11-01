@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="ikoner/css/fontawesome.css">
     <link rel="stylesheet" href="ikoner/css/brands.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="preload"
+        as="image"
+        href="https://picsum.photos/id/106/1200/1800"
+        imagesrcset="
+            https://picsum.photos/id/106/400/600   400w,
+            https://picsum.photos/id/106/600/900   600w,
+            https://picsum.photos/id/106/800/1200  800w,
+            https://picsum.photos/id/106/1200/1800 1200w
+        "
+        imagesizes="(max-width: 600px) 100vw, 1200px"
+        fetchpriority="high"
+        type="image/jpeg"
+/>
     <title>SASS</title>
 </head>
 <body> 
@@ -47,11 +60,24 @@
 <div class=" mobil deskop">
     <main>
         <section id="welcome-banner">
-            <header>
+            <img
+                src="https://picsum.photos/id/106/800/1200"
+            srcset="
+            https://picsum.photos/id/106/400/600   400w,
+            https://picsum.photos/id/106/600/900   600w,
+            https://picsum.photos/id/106/800/1200  800w,
+            https://picsum.photos/id/106/1200/1800 1200w
+            "
+            sizes="(max-width: 600px) 100vw, 1200px"
+            alt="Beskrivelse av motivet"
+            width="800" height="1200"
+            loading="lazy" decoding="async" />
+            <header class="banner-content">
                 <h1>Årets største salg</h1>
-                <a href="index.html" class="btn" aria-label="Se tilbud" titel="tilbud">Se tilbudene</a>
+                <a href="index.html" class="btn">Se tilbudene</a>
             </header>
         </section>
+
         <section id="categories">
             <h2>Categories</h2>
         <div class="kategori-container">

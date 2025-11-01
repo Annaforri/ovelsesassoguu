@@ -290,26 +290,34 @@ section, article, .grid-item {
 /* Horisontal swipe-container uten synlig scrollbar */
 /* ===== Velkomstbanner ======================================= */
 #welcome-banner {
-  /* legg vanlige deklarasjoner først */
-  margin: 2rem 1rem;
-  padding: 2rem;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  /* så inkluderer du mixinene */
+  position: relative;
+  height: clamp(200px, 40vw, 300px);
+  border-radius: 1rem;
+  overflow: hidden;
+  /* Bruker kortbase-mixin for bakgrunn, radius og hovereffekt */
   background-color: #c2c2c2;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  position: relative;
-  background-image: url("https://picsum.photos/id/106/800/400");
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
+  /* === Bilde === */
+  /* === Overlay === */
+  /* === Tekst og knapp === */
 }
 #welcome-banner:hover {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
+}
+#welcome-banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center bottom;
+     object-position: center bottom; /* <- viser mer av bunnen */
+  z-index: 0; /* viktige lag: bilde nederst */
 }
 #welcome-banner::before {
   content: "";
@@ -318,14 +326,22 @@ section, article, .grid-item {
   background-color: rgba(255, 255, 255, 0.45);
   z-index: 1;
 }
-#welcome-banner > * {
-  position: relative;
+#welcome-banner .banner-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   z-index: 2;
+  color: #000000;
 }
-#welcome-banner h1 {
-  margin: 0 0 1rem 0;
+#welcome-banner .banner-content h1 {
+  margin: 1rem;
 }
-#welcome-banner .btn {
+#welcome-banner .banner-content .btn {
+  /* Bruker knapp-stil mixin for styling og hovereffekt */
   display: inline-block;
   background-color: #000000;
   color: white;
@@ -336,24 +352,25 @@ section, article, .grid-item {
   font-weight: 700;
   cursor: pointer;
   transition: background-color all 0.3s ease, transform all 0.3s ease;
+  margin: 0;
 }
-#welcome-banner .btn:hover {
+#welcome-banner .banner-content .btn:hover {
   background-color: #003b0e;
   transform: translateY(-2px);
 }
-#welcome-banner .btn:active {
+#welcome-banner .banner-content .btn:active {
   transform: translateY(0);
 }
 
 /* ===== Kategorier =========================================== */
 #categories h2 {
-  margin: 0 0 0.5rem 1.5rem;
+  margin: 1rem 0 0.5rem 1.5rem;
 }
 
 .kategori-container {
   display: grid;
   gap: 1rem;
-  margin: 0 1rem 1rem;
+  margin: 1rem 1rem 1rem;
   /* Flytende rutenett: så mange kolonner som får plass,
      men hvert kort kan krympe ned til 140px. */
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -385,6 +402,9 @@ section, article, .grid-item {
 #el:hover, #fashion:hover, #home:hover {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
+}
+#el:hover, #fashion:hover, #home:hover {
+  background-color: rgba(182, 255, 199, 0.6);
 }
 #el h3, #fashion h3, #home h3 {
   margin: 0;
@@ -531,6 +551,7 @@ section, article, .grid-item {
   .deskop {
     width: 90%;
     margin: 0 auto;
+    margin-top: 1rem;
     max-width: 1200px;
   }
 }/*# sourceMappingURL=main.css.map */

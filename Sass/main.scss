@@ -28,6 +28,8 @@ section, article, .grid-item { min-width: 0; }
 }
 
 /* ===== Mixins =============================================== */
+
+
 @mixin kortbase(
   $bg: design.$hvit,
   $radius: design.$radius,
@@ -45,31 +47,6 @@ section, article, .grid-item { min-width: 0; }
   }
 }
 
-@mixin bg-overlay(
-  $img-url,
-  $overlay-color: rgba(255, 255, 255, 0.4),
-  $position: center,
-  $size: cover
-) {
-  position: relative;
-  background-image: url($img-url);
-  background-position: $position;
-  background-size: $size;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: $overlay-color;
-    z-index: 1;
-    }
-
-    > * {
-    position: relative;
-    z-index: 2;
-    }
-}
 
 @mixin knapp-stil(
   $bg-color: design.$svart,
@@ -113,30 +90,71 @@ section, article, .grid-item { min-width: 0; }
 /* ===== Velkomstbanner ======================================= */
 
 #welcome-banner {
-  /* legg vanlige deklarasjoner først */
-  margin: 2rem 1rem;
-  padding: 2rem;
-  display: grid;
-  place-items: center;
-  text-align: center;
+  position: relative;
+  height: clamp(200px, 40vw, 300px);
+  border-radius: 1rem;
+  overflow: hidden;
 
-  /* så inkluderer du mixinene */
+  /* Bruker kortbase-mixin for bakgrunn, radius og hovereffekt */
   @include kortbase(#c2c2c2);
-  @include bg-overlay("https://picsum.photos/id/106/800/400", rgba(255,255,255,.45));
 
-  h1 { margin: 0 0 1rem 0; }
-  .btn { @include knapp-stil; }
+  /* === Bilde === */
+ img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center bottom;  /* <- viser mer av bunnen */
+  z-index: 0;                      /* viktige lag: bilde nederst */
 }
+
+  /* === Overlay === */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.45);
+    z-index: 1;
+  }
+
+  /* === Tekst og knapp === */
+  .banner-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;   // legg innholdet i en kolonne
+  justify-content: center;  // sentrer vertikalt i banneret
+  align-items: center;      // sentrer horisontalt
+  text-align: center;
+  z-index: 2;
+  color: design.$svart;
+
+
+
+    h1 {
+      margin:1rem;
+    }
+
+    .btn {
+      /* Bruker knapp-stil mixin for styling og hovereffekt */
+      @include knapp-stil;
+      margin: 0;
+    }
+  }
+}
+
 
 /* ===== Kategorier =========================================== */
 #categories {
-  h2 { margin: 0 0 .5rem 1.5rem; }
+  h2 { margin: 1rem 0 .5rem 1.5rem; }
 }
 
 .kategori-container {
   display: grid;
   gap: 1rem;
-  margin: 0 1rem 1rem;
+  margin: 1rem 1rem 1rem;
 
   /* Flytende rutenett: så mange kolonner som får plass,
      men hvert kort kan krympe ned til 140px. */
@@ -147,6 +165,7 @@ section, article, .grid-item { min-width: 0; }
       #el{
         grid-column: 1/2;
         grid-row: 1/4;
+       
     }
 
     #fashion{
@@ -167,6 +186,8 @@ section, article, .grid-item { min-width: 0; }
   padding: 1rem;
   display: flex;
   align-items: center;
+
+  &:hover{background-color: #b6ffc799;}
 
   
 
@@ -283,6 +304,7 @@ section, article, .grid-item { min-width: 0; }
   .deskop {
     width: 90%;
     margin: 0 auto;
+    margin-top: 1rem;
     max-width: 1200px;
   }
 
