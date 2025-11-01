@@ -364,7 +364,7 @@ section, article, .grid-item {
 
 /* ===== Kategorier =========================================== */
 #categories h2 {
-  margin: 1rem 0 0.5rem 1.5rem;
+  margin: 1rem;
 }
 
 .kategori-container {
@@ -504,7 +504,7 @@ section, article, .grid-item {
 /* ===== Populære kategorier ================================= */
 /* ===== Populære kategorier ===== */
 #popular h2 {
-  margin: 1rem 0 0.5rem 1.5rem;
+  margin: 1rem 0;
 }
 #popular .popular-container {
   display: grid;
@@ -521,6 +521,7 @@ section, article, .grid-item {
   display: grid;
   place-items: center;
   text-align: center;
+  padding: 0;
   /* GI KORTET HØYDE (viktig når img er absolute) */
   aspect-ratio: 1/1;
   /* Bildet dekker boksen */
@@ -556,7 +557,7 @@ section, article, .grid-item {
   font-size: clamp(1.2rem, 2.2vw, 1.9rem);
   background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.8rem;
   box-sizing: border-box;
 }
 
@@ -584,9 +585,6 @@ section, article, .grid-item {
     gap: 1.25rem;
     margin-inline: auto;
     /* --- Spesifikk plassering med k1–k4 --- */
-  }
-  #popular .popular-container article {
-    padding: 1.25rem;
   }
   #popular .popular-container article img {
     aspect-ratio: 4/3;

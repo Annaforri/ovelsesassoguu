@@ -148,7 +148,7 @@ section, article, .grid-item { min-width: 0; }
 
 /* ===== Kategorier =========================================== */
 #categories {
-  h2 { margin: 1rem 0 .5rem 1.5rem; }
+  h2 { margin: 1rem; }
 }
 
 .kategori-container {
@@ -262,7 +262,7 @@ section, article, .grid-item { min-width: 0; }
 /* ===== Populære kategorier ================================= */
 /* ===== Populære kategorier ===== */
 #popular {
-  h2 { margin: 1rem 0 .5rem 1.5rem; }
+  h2 { margin: 1rem 0 }
 
   .popular-container {
     display: grid;
@@ -277,6 +277,7 @@ section, article, .grid-item { min-width: 0; }
     display: grid;
     place-items: center;
     text-align: center;
+    padding:0;
 
     /* GI KORTET HØYDE (viktig når img er absolute) */
     aspect-ratio: 1 / 1;            // kvadrat (endre ved behov)
@@ -312,7 +313,7 @@ section, article, .grid-item { min-width: 0; }
       font-size: clamp(1.2rem, 2.2vw, 1.9rem);
       background-color: rgba(255, 255, 255, 0.7);
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.8rem;
       box-sizing: border-box;
     }
   }
@@ -348,7 +349,6 @@ section, article, .grid-item { min-width: 0; }
       margin-inline: auto;
 
       article {
-        padding: 1.25rem;
 
         img {
           aspect-ratio: 4 / 3;
