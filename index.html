@@ -64,20 +64,35 @@
     <main>
         <section id="welcome-banner">
           
-            <img
-            src="https://picsum.photos/id/106/800/1200"
+          <picture>
+        <source
+            type="image/avif"
             srcset="
-                https://picsum.photos/id/106/400/600   400w,
-                https://picsum.photos/id/106/600/900   600w,
-                https://picsum.photos/id/106/800/1200  800w,
-                https://picsum.photos/id/106/1200/1800 1200w
+            https://picsum.photos/id/106/600/200  600w,
+            https://picsum.photos/id/106/900/300  900w,
+            https://picsum.photos/id/106/1200/400 1200w
             "
-            sizes="(max-width: 600px) 100vw, 1200px"
+            sizes="(max-width: 700px) 100vw, 1200px" />
+        <source
+            type="image/webp"
+            srcset="
+            https://picsum.photos/id/106/600/200  600w,
+            https://picsum.photos/id/106/900/300  900w,
+            https://picsum.photos/id/106/1200/400 1200w
+            "
+            sizes="(max-width: 700px) 100vw, 1200px" />
+        <img
+            src="https://picsum.photos/id/106/1200/400"
+            srcset="
+            https://picsum.photos/id/106/600/200  600w,
+            https://picsum.photos/id/106/900/300  900w,
+            https://picsum.photos/id/106/1200/400 1200w
+            "
+            sizes="(max-width: 700px) 100vw, 1200px"
             alt="Beskrivelse av motivet"
-            width="800" height="1200"
-            decoding="async"
-            fetchpriority="high"
-            />
+            width="1200" height="400"
+            fetchpriority="high" decoding="async" />
+        </picture>
            <header class="banner-content">
                 <h1>Årets største salg</h1>
                 <a href="index.html" class="btn">Se tilbudene</a>
