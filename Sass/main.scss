@@ -260,36 +260,65 @@ section, article, .grid-item { min-width: 0; }
 }
 
 /* ===== Populære kategorier ================================= */
+/* ===== Populære kategorier ===== */
 #popular {
   h2 { margin: 1rem 0 .5rem 1.5rem; }
-}
 
-.popular-container {
-  display: grid;
-  gap: 0.5rem;
-  margin: 0 1rem 2rem;
-
-  /* 2–4 kolonner etter plass; kort kan krympe til 140px */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-#popular article {
-  @include kortbase;
-  padding: 0.5rem;
-  display: grid;
-
-  img {
-    width: 100%;
-    aspect-ratio: 1 / 1;     /* kvadrat */
-    object-fit: cover;
-    border-radius: 5px;
-    display: block;
+  .popular-container {
+    display: grid;
+    margin: 0 1rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 
-  h3 { margin-top: 1rem;
-  font-weight: 500;
+  article {
+    @include kortbase;              // skygge/radius/hover
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    text-align: center;
+
+    /* GI KORTET HØYDE (viktig når img er absolute) */
+    aspect-ratio: 1 / 1;            // kvadrat (endre ved behov)
+    // ev. bruk: height: clamp(180px, 28vw, 280px);
+
+    /* Bildet dekker boksen */
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      // fjern gamle regler som satte aspect-ratio på IMG
+    }
+
+    /* Hvit overlay */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.4);
+      z-index: 1;
+    }
+
+    /* Tekst over */
+    h3 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      color: #000;                  // svart tekst
+      font-weight: 800;
+      font-size: clamp(1.2rem, 2.2vw, 1.9rem);
+      background-color: rgba(255, 255, 255, 0.7);
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+  }
 }
-}
+
+
 
 /* ===== Små ekstra-justeringer =============================== */
 @media (max-width: 360px) {
@@ -309,6 +338,51 @@ section, article, .grid-item { min-width: 0; }
     max-width: 1200px;
   }
 
+  @media (min-width: 700px) {
+  #popular {
+    .popular-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.25rem;
+      margin-inline: auto;
+
+      article {
+        padding: 1.25rem;
+
+        img {
+          aspect-ratio: 4 / 3;
+          border-radius: 10px;
+        }
+
+      
+      }
+
+      /* --- Spesifikk plassering med k1–k4 --- */
+      .k1 {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .k2 {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .k3 {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .k4 {
+        grid-column: 2;
+        grid-row: 2;
+      }
+    }
+  }
 }
+}
+
+
 
 
