@@ -50,7 +50,7 @@ section, article, .grid-item { min-width: 0; }
 
 @mixin knapp-stil(
   $bg-color: design.$svart,
-  $hover-bg-color: design.$mørk-grønn,
+  $hover-bg-color: #242424,
   $text-color: design.$hvit,
   $padding: .75rem 1.5rem,
   $radius: design.$radius-sm,
