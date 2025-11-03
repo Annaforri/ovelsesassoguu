@@ -187,7 +187,7 @@ section, article, .grid-item { min-width: 0; }
   display: flex;
   align-items: center;
 
-  &:hover{background-color: #b6ffc799;}
+  &:hover{background-color: #7e7e7e28;}
 
   
 
@@ -266,8 +266,8 @@ section, article, .grid-item { min-width: 0; }
 
   .popular-container {
     display: grid;
-    margin: 0 1rem 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap:1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
   article {
@@ -278,12 +278,8 @@ section, article, .grid-item { min-width: 0; }
     place-items: center;
     text-align: center;
     padding:0;
+    height: clamp(180px, 28vw, 280px);
 
-    /* GI KORTET HØYDE (viktig når img er absolute) */
-    aspect-ratio: 1 / 1;            // kvadrat (endre ved behov)
-    // ev. bruk: height: clamp(180px, 28vw, 280px);
-
-    /* Bildet dekker boksen */
     img {
       position: absolute;
       inset: 0;
@@ -299,19 +295,21 @@ section, article, .grid-item { min-width: 0; }
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(255,255,255,.4);
+      background: rgba(0, 0, 0, 0.3);
       z-index: 1;
     }
 
     /* Tekst over */
     h3 {
-      position: relative;
+      position: absolute;
+      display: grid;
+      place-items: center;
       z-index: 2;
       margin: 0;
       color: #000;                  // svart tekst
       font-weight: 800;
       font-size: clamp(1.2rem, 2.2vw, 1.9rem);
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(255, 255, 255, 0.8);
       width: 100%;
       padding: 0.8rem;
       box-sizing: border-box;
